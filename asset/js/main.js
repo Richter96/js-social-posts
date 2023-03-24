@@ -82,15 +82,15 @@ console.log(containerEl);
 
 
 posts.forEach(post => {
-    console.log(post)
+    // console.log(post)
     console.log(post.author.name)
-    
     let immagineProfilo;
-    let imgNan = generateImgNan(post.author.name);
-    if (post.author.image == 'null') {
-        imgAutor = imgNan;
-    } else { imgAutor = post.author.image }
-
+    let imgNan = generatechartautor(post.author.name);
+    // console.log(imgNan);
+    if (post.author.image == null ) {
+        immagineProfilo = imgNan;
+    } else { immagineProfilo = post.author.image }
+    console.log(immagineProfilo)
     const postMarkup = generatePost(immagineProfilo, post.author.name, post.content, post.media, post.likes)
     containerEl.insertAdjacentHTML('beforeend', postMarkup)
 });
@@ -134,7 +134,7 @@ function generatePost(img, nome, text, media, like) {
 
 
 
-function generateImgNan(autor) {
+function generatechartautor(autor) {
     // separo la stringa tra nome e cognome
     // console.log(autor)
     const splitNameSurname = autor.split(' ')
@@ -152,7 +152,7 @@ function generateImgNan(autor) {
     // console.log(firstChartSurname)
     
     const imgNan = firstChartName + firstChartSurname
-    console.log(imgNan)
+    return imgNan
 }
 
 
