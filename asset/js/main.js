@@ -80,36 +80,39 @@ Milestone 2 - Prendendo come riferimento il layout di esempio presente nell'html
 const containerEl = document.getElementById('container')
 console.log(containerEl);
 
+
 posts.forEach(post => {
-    // console.log(post)
-    // console.log(post.author.name)
-    const postMarkup = generatePost(post)
+    console.log(post)
+    console.log(post.author.name)
+    let immagineProfilo;
+    let imgNan = "L.C.";
+    if (post.author.image === null) {
+        imgAutor = imgNan;
+    } else { imgAutor = post.author.image }
+
+    const postMarkup = generatePost(immagineProfilo, post.author.name, post.content, post.media, post.likes)
     containerEl.insertAdjacentHTML('beforeend', postMarkup)
-
 });
-// selezioniamo elemento della dom 
-
-const postEl = document.querySelectorAll('.post')
-console.log(postEl)
-postEl.forEach(element => {
-    console.log(element)
-});
-/* const headerPostMarkup = generateHederPost()
-
- postEl.insertAdjacentHTML('beforeend', headerPostMarkup) */
 
 
 
-
-
-
-function generatePost() {
-    return `
+function generatePost(img, nome, text, media, like) {
+    return /* `
   <div class="post">
-            
-            <div class="post__text">Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.</div>
+            <div class="post__header">
+                <div class="post-meta">                    
+                    <div class="post-meta__icon">
+                        <img class="profile-pic" src="${img}" alt="">                    
+                    </div>
+                    <div class="post-meta__data">
+                        <div class="post-meta__author">${nome}</div>
+                        <div class="post-meta__time">4 mesi fa</div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="post__text">${text}</div>
             <div class="post__image">
-                <img src="https://unsplash.it/600/300?image=171" alt="">
+                <img src="${media}" alt="">
             </div>
             <div class="post__footer">
                 <div class="likes js-likes">
@@ -120,23 +123,37 @@ function generatePost() {
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
+                        Piace a <b id="like-counter-1" class="js-likes-counter">${like}</b> persone
                     </div>
                 </div> 
             </div>            
-        </div>`
+        </div>`   */
 }
 
-function generateHederPost(name, img,) {
-    return `<div class="post__header">
-                <div class="post-meta">                    
-                    <div class="post-meta__icon">
-                        <img class="profile-pic" src="${img}" alt="${name}">                    
-                    </div>
-                    <div class="post-meta__data">
-                        <div class="post-meta__author">${name}</div>
-                        <div class="post-meta__time">4 mesi fa</div>
-                    </div>                    
-                </div>
-            </div>`
+
+const autor = 'Riccardo Castiglione'
+// separo la stringa tra nome e cognome
+console.log(autor)
+const splitNameSurname = autor.split(' ')
+console.log('separazione nome e cosnome',splitNameSurname)
+// recuperaro il nome
+let autorName = splitNameSurname[0]
+// recuperaro il cognome
+let autorSurname = splitNameSurname[1]
+
+console.log(autorName);
+console.log(autorSurname);
+const firstChartName = autorName.charAt(0);
+const firstChartSurname = autorSurname.charAt(0);
+console.log(firstChartName)
+console.log(firstChartSurname)
+
+const imgNan = firstChartName + firstChartSurname
+console.log(imgNan)
+
+function generateImgNan(autor) {
+    
 }
+
+
+
