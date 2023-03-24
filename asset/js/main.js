@@ -83,7 +83,7 @@ console.log(containerEl);
 posts.forEach(post => {
     console.log(post)
     console.log(post.author.name)
-    const postMarkup = generatePost()
+    const postMarkup = generatePost(post)
     containerEl.insertAdjacentHTML('beforeend', postMarkup)
 });
 
@@ -93,17 +93,7 @@ posts.forEach(post => {
 function generatePost() {
   return `
   <div class="post">
-            <div class="post__header">
-                <div class="post-meta">                    
-                    <div class="post-meta__icon">
-                        <img class="profile-pic" src="https://unsplash.it/300/300?image=15" alt="Phil Mangione">                    
-                    </div>
-                    <div class="post-meta__data">
-                        <div class="post-meta__author">Phil Mangione</div>
-                        <div class="post-meta__time">4 mesi fa</div>
-                    </div>                    
-                </div>
-            </div>
+            
             <div class="post__text">Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.</div>
             <div class="post__image">
                 <img src="https://unsplash.it/600/300?image=171" alt="">
@@ -122,4 +112,18 @@ function generatePost() {
                 </div> 
             </div>            
         </div>`  
+}
+
+function generateHederPost(autor, name, ) {
+    return `<div class="post__header">
+                <div class="post-meta">                    
+                    <div class="post-meta__icon">
+                        <img class="profile-pic" src="${autor}" alt="${name}">                    
+                    </div>
+                    <div class="post-meta__data">
+                        <div class="post-meta__author">Phil Mangione</div>
+                        <div class="post-meta__time">4 mesi fa</div>
+                    </div>                    
+                </div>
+            </div>`
 }
