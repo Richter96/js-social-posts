@@ -81,17 +81,30 @@ const containerEl = document.getElementById('container')
 console.log(containerEl);
 
 posts.forEach(post => {
-    console.log(post)
-    console.log(post.author.name)
+    // console.log(post)
+    // console.log(post.author.name)
     const postMarkup = generatePost(post)
     containerEl.insertAdjacentHTML('beforeend', postMarkup)
+
 });
+// selezioniamo elemento della dom 
+
+const postEl = document.querySelectorAll('.post')
+console.log(postEl)
+postEl.forEach(element => {
+    console.log(element)
+});
+/* const headerPostMarkup = generateHederPost()
+
+ postEl.insertAdjacentHTML('beforeend', headerPostMarkup) */
+
+
 
 
 
 
 function generatePost() {
-  return `
+    return `
   <div class="post">
             
             <div class="post__text">Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.</div>
@@ -111,17 +124,17 @@ function generatePost() {
                     </div>
                 </div> 
             </div>            
-        </div>`  
+        </div>`
 }
 
-function generateHederPost(autor, name, ) {
+function generateHederPost(name, img,) {
     return `<div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
-                        <img class="profile-pic" src="${autor}" alt="${name}">                    
+                        <img class="profile-pic" src="${img}" alt="${name}">                    
                     </div>
                     <div class="post-meta__data">
-                        <div class="post-meta__author">Phil Mangione</div>
+                        <div class="post-meta__author">${name}</div>
                         <div class="post-meta__time">4 mesi fa</div>
                     </div>                    
                 </div>
