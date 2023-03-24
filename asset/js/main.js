@@ -88,8 +88,8 @@ posts.forEach(post => {
     let imgNan = generatechartautor(post.author.name);
     // console.log(imgNan);
     if (post.author.image == null ) {
-        immagineProfilo = imgNan;
-    } else { immagineProfilo = post.author.image }
+        immagineProfilo = `CC`
+    } else { immagineProfilo = `<img class="profile-pic" src="${post.author.image}" alt="">`  }
     console.log(immagineProfilo)
     const postMarkup = generatePost(immagineProfilo, post.author.name, post.content, post.media, post.likes)
     containerEl.insertAdjacentHTML('beforeend', postMarkup)
@@ -103,7 +103,7 @@ function generatePost(img, nome, text, media, like) {
             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
-                        <img class="profile-pic" src="${img}" alt="">                    
+                        ${img}               
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">${nome}</div>
