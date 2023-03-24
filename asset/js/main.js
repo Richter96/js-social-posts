@@ -88,7 +88,7 @@ posts.forEach(post => {
     let imgNan = generatechartautor(post.author.name);
     // console.log(imgNan);
     if (post.author.image == null ) {
-        immagineProfilo = `CC`
+        immagineProfilo = `${imgNan}`
     } else { immagineProfilo = `<img class="profile-pic" src="${post.author.image}" alt="">`  }
     console.log(immagineProfilo)
     const postMarkup = generatePost(immagineProfilo, post.author.name, post.content, post.media, post.likes)
