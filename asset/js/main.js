@@ -84,9 +84,10 @@ console.log(containerEl);
 posts.forEach(post => {
     console.log(post)
     console.log(post.author.name)
+    
     let immagineProfilo;
-    let imgNan = "L.C.";
-    if (post.author.image === null) {
+    let imgNan = generateImgNan(post.author.name);
+    if (post.author.image == 'null') {
         imgAutor = imgNan;
     } else { imgAutor = post.author.image }
 
@@ -97,7 +98,7 @@ posts.forEach(post => {
 
 
 function generatePost(img, nome, text, media, like) {
-    return /* `
+    return `
   <div class="post">
             <div class="post__header">
                 <div class="post-meta">                    
@@ -127,32 +128,31 @@ function generatePost(img, nome, text, media, like) {
                     </div>
                 </div> 
             </div>            
-        </div>`   */
+        </div>`  
 }
 
 
-const autor = 'Riccardo Castiglione'
-// separo la stringa tra nome e cognome
-console.log(autor)
-const splitNameSurname = autor.split(' ')
-console.log('separazione nome e cosnome',splitNameSurname)
-// recuperaro il nome
-let autorName = splitNameSurname[0]
-// recuperaro il cognome
-let autorSurname = splitNameSurname[1]
 
-console.log(autorName);
-console.log(autorSurname);
-const firstChartName = autorName.charAt(0);
-const firstChartSurname = autorSurname.charAt(0);
-console.log(firstChartName)
-console.log(firstChartSurname)
-
-const imgNan = firstChartName + firstChartSurname
-console.log(imgNan)
 
 function generateImgNan(autor) {
+    // separo la stringa tra nome e cognome
+    // console.log(autor)
+    const splitNameSurname = autor.split(' ')
+    console.log('separazione nome e cosnome',splitNameSurname)
+    // recuperaro il nome
+    let autorName = splitNameSurname[0]
+    // recuperaro il cognome
+    let autorSurname = splitNameSurname[1]
     
+    // console.log(autorName);
+    // console.log(autorSurname);
+    const firstChartName = autorName.charAt(0);
+    const firstChartSurname = autorSurname.charAt(0);
+    // console.log(firstChartName)
+    // console.log(firstChartSurname)
+    
+    const imgNan = firstChartName + firstChartSurname
+    console.log(imgNan)
 }
 
 
