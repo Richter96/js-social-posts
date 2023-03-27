@@ -88,16 +88,38 @@ posts.forEach(post => {
     let imgNan = generatechartautor(post.author.name);
     // console.log(imgNan);
     if (post.author.image == null ) {
-        immagineProfilo = `${imgNan}`
+        immagineProfilo = `<div class="imgNan"><span class="fs-4">${imgNan}</span></div>  `
     } else { immagineProfilo = `<img class="profile-pic" src="${post.author.image}" alt="">`  }
     console.log(immagineProfilo)
-    const postMarkup = generatePost(immagineProfilo, post.author.name, post.content, post.media, post.likes)
+    console.log(post);
+    const postMarkup = generatePost(immagineProfilo, post)
     containerEl.insertAdjacentHTML('beforeend', postMarkup)
+    
+    
 });
 
 
 
-function generatePost(img, nome, text, media, like) {
+const btnLike = document.querySelector('.like-button')
+
+// creato una funzone cliccato
+function clickLike(id){
+    // console.log('clickedPost', id)
+    // ciclare sul array posts per capire quale bottone sto battendo
+    posts.forEach(post => {
+        // se id dell'array post è uguale all'id 
+        if ( post.id == id) {
+            post.likes += 1
+        } 
+    });
+    console.log(posts);
+
+ }
+
+
+function generatePost(img, post) {
+    console.log('post func', post)
+
     return `
   <div class="post">
             <div class="post__header">
@@ -106,25 +128,25 @@ function generatePost(img, nome, text, media, like) {
                         ${img}               
                     </div>
                     <div class="post-meta__data">
-                        <div class="post-meta__author">${nome}</div>
+                        <div class="post-meta__author">${post.author.name}</div>
                         <div class="post-meta__time">4 mesi fa</div>
                     </div>                    
                 </div>
             </div>
-            <div class="post__text">${text}</div>
+            <div class="post__text">${post.content}</div>
             <div class="post__image">
-                <img src="${media}" alt="">
+                <img src="${post.media}" alt="">
             </div>
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                        <button class="like-button border-0 js-like-button" data-postid="${post.id}" onclick="clickLike(${post.id})">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
-                        </a>
+                        </button>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${like}</b> persone
+                        Piace a <b id="${post.id}" class="js-likes-counter">${post.likes}</b> persone
                     </div>
                 </div> 
             </div>            

@@ -123,3 +123,11 @@ h1 {
     color: #0CD977;
     cursor: default;
 }
+.imgNan {
+    border-radius: 50%;
+    width: 60px;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
